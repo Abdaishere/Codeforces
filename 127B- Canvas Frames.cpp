@@ -1,19 +1,30 @@
 #include <iostream>
 using namespace std;
-int n,a,b,c,x,y,z;
+int n,j,count,nums[100];
  
 int main()
 {
     cin>>n;
-    for (int i=0;i<n; i++)
+    for (int i=0; i<n; i++)
     {
-        cin>>x>>y>>z;
-        a+=x;
-        b+=y;
-        c+=z;
+        cin>>nums[i];
     }
-    if (a || b || c)
-        cout<<"NO";
-    else cout<<"YES";
+    for (int i=0; i<n; i++)
+    {
+        for (j=i+1; j<n; j++)
+        {
+            if(nums[i]==nums[j])
+            {
+                for (int f=j;f<n-1; f++)
+                {
+                    nums[f]=nums[f+1];
+                }
+                n--;
+                count++;
+                break;
+            }
+        }
+    }
+    cout<<count/2;
     return 0;
 }

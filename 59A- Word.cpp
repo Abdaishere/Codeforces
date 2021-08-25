@@ -1,16 +1,20 @@
 #include <iostream>
+#include<bits/stdc++.h>
  
 using namespace std;
-int arr[10];
  
-int main(){
-    string num;
-    cin>>num;
-    for(int i=0; i< num.length(); i++)
-        arr[(int)(num[i])-48]++;
-    int sum = arr[7]+arr[4];
-    if (sum == 4 || sum==7)
-        cout<<"YES";
+int main() {
+    string word;
+    cin>>word;
+    int small=0,cap=0;
+    for (int i=0; word[i]; i++)
+        if (word[i] >= 65 && word[i] <= 90)
+            cap++;
+        else
+            small++;
+    if (cap > small)
+        transform(word.begin(), word.end(), word.begin(), ::toupper);
     else
-        cout<<"NO";
+        transform(word.begin(), word.end(), word.begin(), ::tolower);
+    cout<<word;
 }

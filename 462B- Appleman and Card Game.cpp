@@ -8,17 +8,33 @@
 //You're gonna die one day
  
 using namespace std;
-long long int a[5],b[5];
+int a['Z'+1];
  
 int main() {
-    int n,m;
-    cin>>n>>m;
-    for(int i=1; i<=n; i++){
-        a[i%5]++;
+    int n,k; cin>>n>>k;
+    while(n--){
+        char x;
+        cin>>x;
+        a[x]++;
     }
-    for(int i=1; i<=m; i++){
-        b[i%5]++;
+    unsigned long long int c=0;
+    while (k!=0){
+        int M= -1,ind = 0;
+        for(int i='A'; i<='Z'; i++){
+            if (M<a[i]){
+                M=a[i];
+                ind=i;
+            }
+        }
+        if (M > k){
+            c+= (unsigned long long int) k*k;
+            k=0;
+        }else{
+            c += (unsigned long long int) a[ind]*a[ind];
+            k -= a[ind];
+            a[ind] =0;
+        }
     }
-    cout<<(a[0]*b[0]+a[1]*b[4]+a[4]*b[1]+a[2]*b[3]+a[3]*b[2]);
+    cout<<c;
 }
  
